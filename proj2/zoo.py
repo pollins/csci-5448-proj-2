@@ -224,3 +224,5 @@ class ZooAnnouncer(Observer):
         """
 
         print(f'This is the Zoo Announcer. The zookeeper will now be {self._action}')
+
+# Eric Freeman et al. Head First Design Patterns. 2004.
