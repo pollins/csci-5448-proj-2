@@ -42,7 +42,7 @@ class Zoo:
 
 class Subject(ABC):
     """
-    Subject interface for Observer pattern
+    Subject interface for Observer pattern, taken from Freeman et al.
     """
 
     @abstractmethod
@@ -60,7 +60,7 @@ class Subject(ABC):
 
 class Observer(ABC):
     """
-    Observer interface for Observer pattern
+    Observer interface for Observer pattern, from Freeman et al.
     """
 
     @abstractmethod
@@ -169,6 +169,7 @@ class Zookeeper(Subject):
         for animal in zoo:
             animal.sleep()
 
+    # these methods from Freeman et al.
     def register_observer(self, observer):
         """Method for observer pattern, add observer to list"""
 
@@ -176,9 +177,9 @@ class Zookeeper(Subject):
 
     def remove_observer(self, observer):
         """For observer pattern, remove observer from list"""
-
-        i = self._observers.index(observer)  # the book prefers a list, but I
-        if i >= 0:                           # don't know why
+        
+        i = self._observers.index(observer)
+        if i >= 0:
             self._observers.remove(self._observers[i])
 
     def notify_observers(self):
@@ -210,7 +211,8 @@ class ZooAnnouncer(Observer):
 
     def update(self, action):
         """
-        Observer update method, changes action and announces
+        Observer update method, changes action and announces, from Freeman et
+        al.
         """
 
         self._action = action
