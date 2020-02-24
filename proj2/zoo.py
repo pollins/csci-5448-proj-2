@@ -75,6 +75,7 @@ class Zookeeper(Subject):
         Construct a Zookeeper with Observer list for Observer pattern
         """
 
+        self._zoo = Zoo()
         self._observers = []
         self._action = None
 
@@ -104,7 +105,7 @@ class Zookeeper(Subject):
         self.set_action(action)
         print(f'The zookeeper is {action}')
 
-    def wake(self, zoo):
+    def wake(self):
         """
         Wake the Animals in a Zoo
 
@@ -114,10 +115,10 @@ class Zookeeper(Subject):
         """
 
         self.do_action('waking the animals.')
-        for animal in zoo:
+        for animal in _zoo:
             animal.wake_up()
 
-    def roll_call(self, zoo):
+    def roll_call(self):
         """
         Call roll for the Animals in a Zoo
 
@@ -127,10 +128,10 @@ class Zookeeper(Subject):
         """
 
         self.do_action('calling roll.')
-        for animal in zoo:
+        for animal in _zoo:
             animal.perform_noise()
 
-    def feed(self, zoo):
+    def feed(self):
         """
         Feed the animals in a Zoo
 
@@ -140,10 +141,10 @@ class Zookeeper(Subject):
         """
 
         self.do_action('feeding the animals.')
-        for animal in zoo:
+        for animal in _zoo:
             animal.eat()
 
-    def exercise(self, zoo):
+    def exercise(zoo):
         """
         Exercise the animals in a Zoo
 
@@ -153,10 +154,10 @@ class Zookeeper(Subject):
         """
 
         self.do_action('exercising the animals.')
-        for animal in zoo:
+        for animal in _zoo:
             animal.roam()
 
-    def shut_down(self, zoo):
+    def shut_down(self):
         """
         Put all the animals to sleep
 
@@ -166,7 +167,7 @@ class Zookeeper(Subject):
         """
 
         self.do_action('shutting down the zoo.')
-        for animal in zoo:
+        for animal in _zoo:
             animal.sleep()
 
     # these methods from Freeman et al.
