@@ -70,12 +70,12 @@ class Observer(ABC):
 
 class Zookeeper(Subject):
 
-    def __init__(self):
+    def __init__(self, zoo):
         """
         Construct a Zookeeper with Observer list for Observer pattern
         """
 
-        self._zoo = Zoo()
+        self._zoo = zoo
         self._observers = []
         self._action = None
 
@@ -115,7 +115,7 @@ class Zookeeper(Subject):
         """
 
         self.do_action('waking the animals.')
-        for animal in _zoo:
+        for animal in self._zoo:
             animal.wake_up()
 
     def roll_call(self):
@@ -128,7 +128,7 @@ class Zookeeper(Subject):
         """
 
         self.do_action('calling roll.')
-        for animal in _zoo:
+        for animal in self._zoo:
             animal.perform_noise()
 
     def feed(self):
@@ -141,10 +141,10 @@ class Zookeeper(Subject):
         """
 
         self.do_action('feeding the animals.')
-        for animal in _zoo:
+        for animal in self._zoo:
             animal.eat()
 
-    def exercise(zoo):
+    def exercise(self):
         """
         Exercise the animals in a Zoo
 
@@ -154,7 +154,7 @@ class Zookeeper(Subject):
         """
 
         self.do_action('exercising the animals.')
-        for animal in _zoo:
+        for animal in self._zoo:
             animal.roam()
 
     def shut_down(self):
@@ -167,7 +167,7 @@ class Zookeeper(Subject):
         """
 
         self.do_action('shutting down the zoo.')
-        for animal in _zoo:
+        for animal in self._zoo:
             animal.sleep()
 
     # these methods from Freeman et al.
